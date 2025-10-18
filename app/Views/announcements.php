@@ -11,10 +11,18 @@
         .title { font-weight: bold; font-size: 1.1rem; margin-bottom: .25rem; }
         .date { color: #666; font-size: .9rem; margin-bottom: .5rem; }
         .empty { color: #666; }
+        .alert { padding: .75rem 1rem; border-radius: 6px; margin-bottom: 1rem; }
+        .alert-error { background: #fdecea; color: #611a15; border: 1px solid #f5c2c0; }
     </style>
 </head>
 <body>
     <h1>Announcements</h1>
+
+    <?php if (session()->getFlashdata('error')): ?>
+        <div class="alert alert-error">
+            <?php echo htmlspecialchars(session()->getFlashdata('error'), ENT_QUOTES, 'UTF-8'); ?>
+        </div>
+    <?php endif; ?>
 
     <?php $items = isset($announcements) && is_array($announcements) ? $announcements : []; ?>
 

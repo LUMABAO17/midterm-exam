@@ -1,0 +1,29 @@
+# Environment
+.env
+.env.*
+/env
+
+# CI4 writable runtime files
+/writable/*
+!/writable/index.html
+
+# Composer
+/vendor/
+/composer.phar
+/.phpunit.result.cache
+
+# Build/docs
+/build/
+/user_guide_src/
+
+# IDE/editor
+/.idea/
+/.vscode/
+/nbproject/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# PHPUnit (keep .dist, ignore local overrides)
+phpunit.xml

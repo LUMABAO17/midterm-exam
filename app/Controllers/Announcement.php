@@ -2,23 +2,14 @@
 
 namespace App\Controllers;
 
-use Config\Database;
+use App\Models\AnnouncementModel;
 
 class Announcement extends BaseController
 {
     public function index()
     {
-        $db = Database::connect();
-        $announcements = [];
-
-        try {
-            if ($db->tableExists('announcements')) {
-                $query = $db->table('announcements')->get();
-                $announcements = $query->getResultArray();
-            }
-        } catch (\Throwable $e) {
-            $announcements = [];
-        }
+        $model = new AnnouncementModel();
+        $announcements = $model->orderBy('created_at', 'DESC')->findAll();
 
         return view('announcements', [
             'announcements' => $announcements,
